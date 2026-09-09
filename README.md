@@ -341,7 +341,7 @@ If configured correctly, it should run without asking for a password.
 
 A desktop notification showing the active fan mode:
 
-![Fan Mode Notification](fan-mode_Balanced.png)
+![Fan Mode Notification](./screenshots/fan-mode_Balanced.png)
 
 ---
 
