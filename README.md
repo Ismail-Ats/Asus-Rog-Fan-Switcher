@@ -361,4 +361,4 @@ The author is not responsible for hardware damage, overheating, or other issues 
 
 This project is licensed under the MIT License.
 
-See [`LICENSE`](LICENSE) for more information.
+See [`LICENSE`](LICENSE) for more information.# Fan-switch
