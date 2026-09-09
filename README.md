@@ -341,9 +341,11 @@ If configured correctly, it should run without asking for a password.
 
 A desktop notification showing the active fan mode:
 
-![Fan Mode Notification](./screenshots/fan-mode_Balanced.png)
-(./screenshots/fan-mode_Overboost.png)
-(./screenshots/fan-mode_Silent.png)
+<p align="center">
+  <img src="./screenshots/fan-mode_Silent.png" width="30%" alt="Silent Mode" />
+  <img src="./screenshots/fan-mode_Balanced.png" width="30%" alt="Balanced Mode" />
+  <img src="./screenshots/fan-mode_Overboost.png" width="30%" alt="Overboost Mode" />
+</p>
 
 ---
 
