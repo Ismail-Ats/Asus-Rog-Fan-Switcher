@@ -348,6 +348,72 @@ A desktop notification showing the active fan mode:
 </p>
 
 ---
+## Optional: show the current mode in the GNOME top bar
+
+If you'd like to see the active fan mode at a glance, you can pin it to the GNOME top bar (right next to the clock) using the [Executor](https://github.com/raujonas/executor) GNOME Shell extension.
+
+> Tested on GNOME Shell 50.4 (Fedora 44).
+
+### 1. Install Executor
+
+It's not in the Fedora repos, so you'll need to grab it from source:
+
+```bash
+cd ~/.local/share/gnome-shell/extensions/
+git clone https://github.com/raujonas/executor.git executor@raujonas.github.io
+cd executor@raujonas.github.io
+glib-compile-schemas schemas/
+```
+
+> ⚠️ The folder name **has to match the extension's UUID exactly**. Executor's UUID is `executor@raujonas.github.io` (that's `.io`, not `.com` — easy to typo). If you're not sure, check `metadata.json` inside the cloned repo and rename the folder if it's off:
+> ```bash
+> cat ~/.local/share/gnome-shell/extensions/executor@raujonas.github.io/metadata.json
+> ```
+
+### 2. Reload GNOME Shell
+
+GNOME won't pick up a new extension until the shell restarts.
+
+- **Xorg:** `Alt+F2` → type `r` → Enter
+- **Wayland** (Fedora's default): there's no live restart — just log out and back in.
+
+### 3. Enable the extension
+
+```bash
+gnome-extensions list          # confirm executor@raujonas.github.io shows up
+gnome-extensions enable executor@raujonas.github.io
+```
+
+### 4. Configure it
+
+Open the Extensions app (`sudo dnf install gnome-extensions-app` if you don't have it), find **Executor**, open its settings, and add a new command entry:
+
+- **Command:**
+  ```bash
+  bash -c 'case $(cat /sys/devices/platform/asus-nb-wmi/fan_boost_mode) in 0) echo "⚖️ Balanced";; 1) echo "🚀 Overboost";; 2) echo "🤫 Silent";; esac'
+  ```
+- **Interval:** `5` seconds
+- **Show in panel:** enabled
+
+Now the top bar will show your current fan mode as plain text, refreshing every 5 seconds — so it catches up shortly after you hit F5.
+
+## Troubleshooting
+
+- **`Invalid argument` when writing to `fan_boost_mode`** — your board might only support a subset of the three values. Check `dmesg` right after writing to see what it complained about.
+- **No notification shows up** — the script tries to guess the desktop session bus path from `$SUDO_USER`. On multi-session or unusual setups, you may need to hardcode `DBUS_SESSION_BUS_ADDRESS` yourself.
+- **Shortcut keeps asking for a password** — double-check the sudoers rule path matches exactly where the script lives, and make sure its permissions/ownership haven't changed since.
+- **`gnome-extensions enable` says "does not exist" right after cloning** — either the folder name doesn't match the UUID in `metadata.json`, or GNOME Shell just hasn't reloaded yet (log out/in on Wayland, `Alt+F2 r` on Xorg).
+- **Executor entry isn't showing in the panel** — make sure "Show in panel" (or whatever it's called) is toggled on, and confirm the command runs cleanly by itself in a terminal first.
+
+## 📸 Screenshot
+A top bar live fan mode indicator showing the active mode:
+
+<p align="center">
+  <img src="./screenshots/fan-mode_Silent.png" width="30%" alt="Silent Mode" />
+  <img src="./screenshots/fan-mode_Balanced.png" width="30%" alt="Balanced Mode" />
+  <img src="./screenshots/fan-mode_Overboost.png" width="30%" alt="Overboost Mode" />
+</p>
+
 
 ## ⚠️ Disclaimer
 
