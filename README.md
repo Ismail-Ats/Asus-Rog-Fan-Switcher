@@ -417,7 +417,7 @@ A top bar live fan mode indicator showing the active mode:
 
 ## ⚠️ Disclaimer
 
-This script directly writes to a hardware-related kernel interface.
+This scripts directly writes to a hardware-related kernel interface.
 
 Use it at your own risk.
 
