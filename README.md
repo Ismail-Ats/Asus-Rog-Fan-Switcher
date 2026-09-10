@@ -409,9 +409,9 @@ Now the top bar will show your current fan mode as plain text, refreshing every 
 A top bar live fan mode indicator showing the active mode:
 
 <p align="center">
-  <img src="./screenshots/fan-mode_Silent.png" width="30%" alt="Silent Mode" />
-  <img src="./screenshots/fan-mode_Balanced.png" width="30%" alt="Balanced Mode" />
-  <img src="./screenshots/fan-mode_Overboost.png" width="30%" alt="Overboost Mode" />
+  <img src="./screenshots/tb-fan-mode_Silent.png" width="30%" alt="Silent Mode" />
+  <img src="./screenshots/tb-fan-mode_Balanced.png" width="30%" alt="Balanced Mode" />
+  <img src="./screenshots/tb-fan-mode_Overboost.png" width="30%" alt="Overboost Mode" />
 </p>
 
 
