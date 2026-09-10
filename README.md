@@ -1,4 +1,4 @@
-# 🎮 ASUS ROG Fan Switcher
+# 🎮 ASUS ROG Fan Switcher + A top bar live fan mode indicator !
 
 A lightweight Bash script for switching fan modes on older ASUS ROG laptops using the `asus-nb-wmi` kernel interface.
 
